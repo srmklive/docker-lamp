@@ -19,9 +19,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
   && php -r "unlink('composer-setup.php');"  
 
-RUN npm i npm@latest -g \
-  && yarn --global install \
-  && yarn --global upgrade
+RUN a2enmod ssl rewrite
 
 RUN apt-get -y autoclean \
   && apt-get -y autoremove \
