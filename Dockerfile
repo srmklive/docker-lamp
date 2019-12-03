@@ -10,7 +10,7 @@ RUN apt-get update \
 RUN add-apt-repository ppa:ondrej/php \
   && apt-get update
 
-RUN apt-get -y install apache2 libssl1.1 openssl php7.0-common php7.0-cli php7.0-curl php7.0-mbstring php7.0-curl \
+RUN apt-get -y install apache2 libxml2 libssl1.1 openssl php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-curl php7.0-mbstring php7.0-curl \
   php7.0-json php7.0-mysql php7.0-pgsql php7.0-gd php7.0-bcmath php7.0-readline php7.0-zip \
   php7.0-imap php7.0-xml php7.0-json php7.0-intl php7.0-soap php7.0-memcached php-xdebug php-redis
 
