@@ -10,10 +10,10 @@ RUN apt-get update \
 RUN add-apt-repository ppa:ondrej/php \
   && apt-get update
 
-RUN apt-get update && apt-get -y upgrade && apt-get -y install apache2 php7.4 libapache2-mod-php7.4 \
-  php7.4-cli php7.4-curl php7.4-mbstring php7.4-json php7.4-mysql php7.4-pgsql php7.4-gd \
-  php7.4-bcmath php7.4-readline php7.4-zip php7.4-imap php7.4-xml php7.4-json php7.4-intl \
-  php7.4-soap php7.4-memcached php7.4-xdebug php7.4-redis
+RUN apt-get update && apt-get -y upgrade && apt-get -y install apache2 php8.0 libapache2-mod-php8.0 \
+  php8.0-fpm php8.0-cli php8.0-curl php8.0-mbstring php8.0-mysql php8.0-pgsql php8.0-gd php8.0-bcmath \
+  php8.0-readline php8.0-zip php8.0-imap php8.0-xml php8.0-intl php8.0-soap php8.0-memcached \
+  php8.0-xdebug php8.0-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
