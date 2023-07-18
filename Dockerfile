@@ -13,10 +13,10 @@ RUN add-apt-repository ppa:ondrej/php \
 RUN apt-get -y install apache2 libxml2 libssl1.1 openssl php7.1 libapache2-mod-php7.1 php7.1-common php7.1-cli php7.1-curl php7.1-mcrypt \
   php7.1-mbstring php7.1-zip php7.1-json php7.1-mysql php7.1-pgsql php7.1-gd \
   php7.1-bcmath php7.1-imap php7.1-xml php7.1-json php7.1-intl php7.1-soap \
-  php7.1-readline php7.1-memcached php-xdebug php-redis
+  php7.1-readline php7.1-memcached php7.1-xdebug php7.1-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-  && php -r "if (hash_file('sha384', 'composer-setup.php') === '795f976fe0ebd8b75f26a6dd68f78fd3453ce79f32ecb33e7fd087d39bfeb978342fb73ac986cd4f54edd0dc902601dc') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
+  && php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
   && php -r "unlink('composer-setup.php');"  
 
