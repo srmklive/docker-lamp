@@ -7,10 +7,17 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
   && apt-get -y upgrade
   
-RUN add-apt-repository ppa:ondrej/php \
-  && apt-get update
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /usr/share/keyrings/nodesource.gpg
 
-RUN apt-get update && apt-get -y upgrade && apt-get -y install apache2 php8.0 libapache2-mod-php8.0 php8.0-common \
+RUN NODE_MAJOR=18 && echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
+    | tee /etc/apt/sources.list.d/nodesource.list
+
+RUN add-apt-repository ppa:ondrej/php \
+  && apt-get update && apt-get -y upgrade
+
+RUN apt-get -y install nodejs && npm install -g npm && npm install -g yarn
+
+RUN apt-get -y install apache2 php8.0 libapache2-mod-php8.0 php8.0-common \
   php8.0-cli php8.0-curl php8.0-mbstring \
   php8.0-mysql php8.0-pgsql php8.0-gd php8.0-bcmath php8.0-readline \
   php8.0-zip php8.0-imap php8.0-xml php8.0-intl php8.0-soap \
