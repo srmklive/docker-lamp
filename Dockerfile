@@ -17,11 +17,11 @@ RUN add-apt-repository ppa:ondrej/php \
 
 RUN apt-get -y install nodejs && npm install -g npm && npm install -g yarn
 
-RUN apt-get -y install apache2 php8.2 libapache2-mod-php8.2 php8.2-common \
-  php8.2-cli php8.2-curl php8.2-mbstring \
-  php8.2-mysql php8.2-pgsql php8.2-gd php8.2-bcmath php8.2-readline \
-  php8.2-zip php8.2-imap php8.2-xml php8.2-intl php8.2-soap \
-  php8.2-memcached php8.2-xdebug php8.2-redis
+RUN apt-get -y install apache2 php8.3 libapache2-mod-php8.3 php8.3-common \
+  php8.3-cli php8.3-curl php8.3-mbstring \
+  php8.3-mysql php8.3-pgsql php8.3-gd php8.3-bcmath php8.3-readline \
+  php8.3-zip php8.3-imap php8.3-xml php8.3-intl php8.3-soap \
+  php8.3-memcached php8.3-xdebug php8.3-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
